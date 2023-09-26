@@ -16423,7 +16423,7 @@ data:
   GITOPS_ACCOUNT_IDENTIFIER: 3CzN_PCmQA24jlpmZ1mQ8w
   GITOPS_AGENT_IDENTIFIER: smpgitopsautomationaccount
 
-  GITOPS_SERVICE_HTTP_TLS_ENABLED: "false"
+  GITOPS_SERVICE_HTTP_TLS_ENABLED: "true"
   GITOPS_SERVICE_HTTP_CERT_FILES: /tmp/ca.bundle
   AGENT_HTTP_TARGET: https://smp-airgap.test.harness.io/gitops
   AGENT_GRPC_TARGET: https://smp-airgap.test.harness.io:443
