@@ -1,0 +1,394 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: gitops-sa-role
+rules:
+  - apiGroups:
+      - apps
+    resources:
+      - deployments
+      - daemonsets
+      - statefulsets
+      - controllerrevisions
+      - replicasets
+    verbs:
+      - get
+      - watch
+      - list
+      - create
+      - patch
+      - delete
+  - apiGroups:
+      - ""
+    resources:
+      - podtemplates
+      - pods
+      - pods/log
+      - persistentvolumeclaims
+      - secrets
+      - nodes
+      - endpoints
+      - services
+      - limitranges
+      - namespaces
+      - serviceaccounts
+      - configmaps
+      - persistentvolumes
+      - resourcequotas
+      - replicationcontrollers
+    verbs:
+      - get
+      - list
+      - watch
+      - create
+      - patch
+      - delete
+  - apiGroups:
+      - ""
+    resources:
+      - services
+    verbs:
+      - create
+      - patch
+      - delete
+  - apiGroups:
+      - certificates.k8s.io
+    resources:
+      - certificatesigningrequests
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - cilium.io
+    resources:
+      - ciliumendpointslices
+      - ciliumlocalredirectpolicies
+      - ciliumnodes
+      - ciliumexternalworkloads
+      - ciliumidentities
+      - ciliumendpoints
+    verbs:
+      - get
+      - list
+      - watch  
+  - apiGroups:
+      - flowcontrol.apiserver.k8s.io
+    resources:
+      - prioritylevelconfigurations
+      - flowschemas
+    verbs:
+      - get
+      - list
+      - watch  
+  - apiGroups:
+      - networking.gke.io
+    resources:
+      - redirectservices
+      - gcpbackendpolicies
+      - servicenetworkendpointgroups
+      - lbpolicies
+      - frontendconfigs
+      - networkloggings
+      - gcpgatewaypolicies
+      - serviceattachments
+      - ingresses
+      - egressnatpolicies
+      - gkenetworkparamsets
+      - managedcertificates
+      - healthcheckpolicies
+      - ingressclasses
+      - networks
+    verbs:
+      - get
+      - list
+      - watch  
+  - apiGroups:
+      - networking.k8s.io
+    resources:
+      - redirectservices
+      - gcpbackendpolicies
+      - servicenetworkendpointgroups
+      - lbpolicies
+      - frontendconfigs
+      - networkloggings
+      - gcpgatewaypolicies
+      - serviceattachments
+      - ingresses
+      - egressnatpolicies
+      - gkenetworkparamsets
+      - managedcertificates
+      - healthcheckpolicies
+      - ingressclasses
+      - networks
+      - networkpolicies
+    verbs:
+      - get
+      - list
+      - watch  
+  - apiGroups:
+      - gateway.networking.k8s.io
+    resources:
+      - gateways
+      - httproutes
+      - gatewayclasses
+      - referencegrants
+    verbs:
+      - get
+      - list
+      - watch 
+  - apiGroups:
+      - auto.gke.io
+    resources:
+      - allowlistedworkloads
+      - allowlistedv2workloads
+    verbs:
+      - get
+      - list
+      - watch   
+  - apiGroups:
+      - node.k8s.io
+    resources:
+      - runtimeclasses
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - autoscaling
+    resources:
+      - horizontalpodautoscalers
+      - verticalpodautoscalers
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - autoscaling.k8s.io
+    resources:
+      - horizontalpodautoscalers
+      - verticalpodautoscalers
+      - multidimpodautoscalers
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - autoscaling.gke.io
+    resources:
+      - horizontalpodautoscalers
+      - verticalpodautoscalers
+      - multidimpodautoscalers
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - rbac.authorization.k8s.io
+    resources:
+      - roles
+      - rolebindings
+      - clusterrolebindings
+      - clusterroles
+    verbs:
+      - get
+      - list
+      - watch
+      - create
+      - patch
+      - delete
+  - apiGroups:
+      - snapshot.storage.k8s.io
+    resources:
+      - volumesnapshots
+      - volumesnapshotcontents
+      - volumesnapshotclasses
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - storage.k8s.io
+    resources:
+      - volumeattachments
+      - csinodes
+      - storageclasses
+      - csistoragecapacities
+      - csidrivers
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - apiextensions.k8s.io
+    resources:
+      - customresourcedefinitions
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - batch
+    resources:
+      - cronjobs
+      - jobs
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - apiregistration.k8s.io
+    resources:
+      - apiservices
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - containerthreatdetection.googleapis.com
+    resources:
+      - containerwatcherstatuses
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - internal.autoscaling.gke.io
+    resources:
+      - capacityrequests
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - hub.gke.io
+    resources:
+      - memberships
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - monitoring.googleapis.com
+    resources:
+      - operatorconfigs
+      - clusterpodmonitorings
+      - rules
+      - clusterrules
+      - globalrules
+      - podmonitorings
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - scheduling.k8s.io
+    resources:
+      - priorityclasses
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - cloud.google.com
+    resources:
+      - backendconfigs
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - admissionregistration.k8s.io
+    resources:
+      - mutatingwebhookconfigurations
+      - validatingwebhookconfigurations
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - argoproj.io
+    resources:
+      - appprojects
+      - applications
+      - applicationsets
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - vulnerabilities.protect.gke.io
+    resources:
+      - extractionresults
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - nodemanagement.gke.io
+    resources:
+      - updateinfos
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - policy
+    resources:
+      - poddisruptionbudgets
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - discovery.k8s.io
+    resources:
+      - endpointslices
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - warden.gke.io
+    resources:
+      - audits
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - kustomize.toolkit.fluxcd.io
+    resources:
+      - kustomizations
+    verbs:
+      - list
+  - apiGroups:
+      - helm.toolkit.fluxcd.io
+    resources:
+      - helmreleases
+    verbs:
+      - list
+  - apiGroups:
+      - notification.toolkit.fluxcd.io
+    resources:
+      - receivers
+      - providers
+      - alerts
+    verbs:
+      - list
+  - apiGroups:
+      - source.toolkit.fluxcd.io
+    resources:
+      - buckets
+      - helmcharts
+      - gitrepositories
+      - helmrepositories
+      - ocirepositories
+    verbs:
+      - list
+  - apiGroups:
+      - monitoring.grafana.com
+    resources:
+      - podlogs
+    verbs:
+      - list
