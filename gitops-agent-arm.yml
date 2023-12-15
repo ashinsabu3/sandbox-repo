@@ -20255,7 +20255,7 @@ metadata:
     app.kubernetes.io/name: argocd-application-controller
     app.kubernetes.io/part-of: argocd
   name: argocd-application-controller
-  namespace: arm-agent-image
+  namespace: arm-ashin
 
 ---
 
@@ -20267,7 +20267,7 @@ metadata:
     app.kubernetes.io/name: argocd-applicationset-controller
     app.kubernetes.io/part-of: argocd
   name: argocd-applicationset-controller
-  namespace: arm-agent-image
+  namespace: arm-ashin
 
 ---
 
@@ -20279,7 +20279,7 @@ metadata:
     app.kubernetes.io/name: argocd-redis
     app.kubernetes.io/part-of: argocd
   name: argocd-redis
-  namespace: arm-agent-image
+  namespace: arm-ashin
 
 ---
 
@@ -20291,7 +20291,7 @@ metadata:
     app.kubernetes.io/name: argocd-repo-server
     app.kubernetes.io/part-of: argocd
   name: argocd-repo-server
-  namespace: arm-agent-image
+  namespace: arm-ashin
 
 ---
 
@@ -20302,16 +20302,16 @@ metadata:
     app.kubernetes.io/component: gitops-agent
     app.kubernetes.io/name: gitops-agent
     app.kubernetes.io/part-of: gitops-agent
-  name: arm-agent-agent
-  namespace: arm-agent-image
+  name: arm-ashin-agent
+  namespace: arm-ashin
 
 ---
 
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: arm-agent-agent-upgrader
-  namespace: arm-agent-image
+  name: arm-ashin-agent-upgrader
+  namespace: arm-ashin
 
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -20322,7 +20322,7 @@ metadata:
     app.kubernetes.io/name: argocd-application-controller
     app.kubernetes.io/part-of: argocd
   name: argocd-application-controller
-  namespace: arm-agent-image
+  namespace: arm-ashin
 rules:
   - apiGroups:
       - ""
@@ -20364,7 +20364,7 @@ metadata:
     app.kubernetes.io/name: argocd-applicationset-controller
     app.kubernetes.io/part-of: argocd
   name: argocd-applicationset-controller
-  namespace: arm-agent-image
+  namespace: arm-ashin
 rules:
   - apiGroups:
       - argoproj.io
@@ -20432,8 +20432,8 @@ metadata:
     app.kubernetes.io/component: server
     app.kubernetes.io/name: gitops-agent
     app.kubernetes.io/part-of: argocd
-  name: arm-agent-agent
-  namespace: arm-agent-image
+  name: arm-ashin-agent
+  namespace: arm-ashin
 rules:
   - apiGroups:
       - ""
@@ -20508,8 +20508,8 @@ rules:
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  namespace: arm-agent-image
-  name: arm-agent-agent-upgrader
+  namespace: arm-ashin
+  name: arm-ashin-agent-upgrader
 rules:
   - apiGroups: ["batch", "apps", "extensions"]
     resources: ["cronjobs"]
@@ -20526,7 +20526,7 @@ metadata:
     app.kubernetes.io/component: application-controller
     app.kubernetes.io/name: argocd-application-controller
     app.kubernetes.io/part-of: argocd
-  name: argocd-application-controller-arm-agent-image
+  name: argocd-application-controller-arm-ashin
 rules:
   - apiGroups:
       - '*'
@@ -20547,7 +20547,7 @@ metadata:
     app.kubernetes.io/component: server
     app.kubernetes.io/name: gitops-agent
     app.kubernetes.io/part-of: argocd
-  name: arm-agent-agent
+  name: arm-ashin-agent
 rules:
   - apiGroups:
       - '*'
@@ -20594,7 +20594,7 @@ metadata:
     app.kubernetes.io/name: argocd-application-controller
     app.kubernetes.io/part-of: argocd
   name: argocd-application-controller
-  namespace: arm-agent-image
+  namespace: arm-ashin
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
@@ -20602,7 +20602,7 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: argocd-application-controller
-    namespace: arm-agent-image
+    namespace: arm-ashin
 
 ---
 
@@ -20614,7 +20614,7 @@ metadata:
     app.kubernetes.io/name: argocd-applicationset-controller
     app.kubernetes.io/part-of: argocd
   name: argocd-applicationset-controller
-  namespace: arm-agent-image
+  namespace: arm-ashin
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
@@ -20622,7 +20622,7 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: argocd-applicationset-controller
-    namespace: arm-agent-image
+    namespace: arm-ashin
 
 ---
 
@@ -20635,7 +20635,7 @@ metadata:
     app.kubernetes.io/name: argocd-redis
     app.kubernetes.io/part-of: argocd
   name: argocd-redis
-  namespace: arm-agent-image
+  namespace: arm-ashin
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
@@ -20643,7 +20643,7 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: argocd-redis
-    namespace: arm-agent-image
+    namespace: arm-ashin
 ---
 
 apiVersion: rbac.authorization.k8s.io/v1
@@ -20653,31 +20653,31 @@ metadata:
     app.kubernetes.io/component: server
     app.kubernetes.io/name: gitops-agent
     app.kubernetes.io/part-of: argocd
-  name: arm-agent-agent
-  namespace: arm-agent-image
+  name: arm-ashin-agent
+  namespace: arm-ashin
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
-  name: arm-agent-agent
+  name: arm-ashin-agent
 subjects:
   - kind: ServiceAccount
-    name: arm-agent-agent
-    namespace: arm-agent-image
+    name: arm-ashin-agent
+    namespace: arm-ashin
 
 ---
 
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: arm-agent-agent-upgrader
-  namespace: arm-agent-image
+  name: arm-ashin-agent-upgrader
+  namespace: arm-ashin
 subjects:
   - kind: ServiceAccount
-    name: arm-agent-agent-upgrader
-    namespace: arm-agent-image
+    name: arm-ashin-agent-upgrader
+    namespace: arm-ashin
 roleRef:
   kind: Role
-  name: arm-agent-agent-upgrader
+  name: arm-ashin-agent-upgrader
   apiGroup: ""
 
 ---
@@ -20688,30 +20688,30 @@ metadata:
     app.kubernetes.io/component: application-controller
     app.kubernetes.io/name: argocd-application-controller
     app.kubernetes.io/part-of: argocd
-  name: argocd-application-controller-arm-agent-image
+  name: argocd-application-controller-arm-ashin
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: argocd-application-controller-arm-agent-image
+  name: argocd-application-controller-arm-ashin
 subjects:
   - kind: ServiceAccount
     name: argocd-application-controller
-    namespace: arm-agent-image
+    namespace: arm-ashin
 ---
 
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: arm-agent-agent
+  name: arm-ashin-agent
 
 roleRef:
   kind: ClusterRole
-  name: arm-agent-agent
+  name: arm-ashin-agent
   apiGroup: rbac.authorization.k8s.io
 subjects:
   - kind: ServiceAccount
-    name: arm-agent-agent
-    namespace: arm-agent-image
+    name: arm-ashin-agent
+    namespace: arm-ashin
 
 ---
 apiVersion: v1
@@ -20721,7 +20721,7 @@ metadata:
     app.kubernetes.io/name: argocd-cm
     app.kubernetes.io/part-of: argocd
   name: argocd-cm
-  namespace: arm-agent-image
+  namespace: arm-ashin
 data:
   cluster.inClusterEnabled: "true"
   helm.valuesFileSchemes: >-
@@ -20739,7 +20739,7 @@ metadata:
     app.kubernetes.io/name: argocd-gpg-keys-cm
     app.kubernetes.io/part-of: argocd
   name: argocd-gpg-keys-cm
-  namespace: arm-agent-image
+  namespace: arm-ashin
 
 ---
 
@@ -20752,7 +20752,7 @@ metadata:
     app.kubernetes.io/name: argocd-cmd-params-cm
     app.kubernetes.io/part-of: argocd
   name: argocd-cmd-params-cm
-  namespace: arm-agent-image
+  namespace: arm-ashin
 
 ---
 
@@ -20763,7 +20763,7 @@ metadata:
     app.kubernetes.io/name: argocd-rbac-cm
     app.kubernetes.io/part-of: argocd
   name: argocd-rbac-cm
-  namespace: arm-agent-image
+  namespace: arm-ashin
 
 ---
 
@@ -20790,7 +20790,7 @@ metadata:
     app.kubernetes.io/name: argocd-ssh-known-hosts-cm
     app.kubernetes.io/part-of: argocd
   name: argocd-ssh-known-hosts-cm
-  namespace: arm-agent-image
+  namespace: arm-ashin
 
 ---
 apiVersion: v1
@@ -20801,13 +20801,13 @@ metadata:
     app.kubernetes.io/name: argocd-tls-certs-cm
     app.kubernetes.io/part-of: argocd
   name: argocd-tls-certs-cm
-  namespace: arm-agent-image
+  namespace: arm-ashin
 ---
 
 apiVersion: v1
 data:
   GITOPS_ACCOUNT_IDENTIFIER: eBdwFYKoS-e2YAMn5tt6_w
-  GITOPS_AGENT_IDENTIFIER: armagent
+  GITOPS_AGENT_IDENTIFIER: armashin
   GITOPS_SERVICE_HTTP_TLS_ENABLED: "false"
   GITOPS_SERVICE_HTTP_CERT_FILES: /tmp/ca.bundle
   AGENT_HTTP_TARGET: https://app.harness.io/gitops
@@ -20827,8 +20827,8 @@ metadata:
     app.kubernetes.io/component: agent
     app.kubernetes.io/name: gitops-agent-cm
     app.kubernetes.io/part-of: argocd
-  name: arm-agent-agent
-  namespace: arm-agent-image
+  name: arm-ashin-agent
+  namespace: arm-ashin
 ---
 
 apiVersion: v1
@@ -20836,16 +20836,16 @@ data:
   config.yaml: |
     mode: GitopsAgent
     dryRun: false
-    workloadName: arm-agent-agent
-    namespace: arm-agent-image
+    workloadName: arm-ashin-agent
+    namespace: arm-ashin
     containerName: gitops-agent
     gitopsAgentConfig:
       gitopsServerHost: https://app.harness.io/gratis/gitops
       caData: /tmp/ca.bundle
 kind: ConfigMap
 metadata:
-  name: arm-agent-agent-upgrader
-  namespace: arm-agent-image
+  name: arm-ashin-agent-upgrader
+  namespace: arm-ashin
 ---
 apiVersion: v1
 kind: Secret
@@ -20854,7 +20854,7 @@ metadata:
     app.kubernetes.io/name: argocd-secret
     app.kubernetes.io/part-of: argocd
   name: argocd-secret
-  namespace: arm-agent-image
+  namespace: arm-ashin
 type: Opaque
 
 ---
@@ -20865,12 +20865,12 @@ metadata:
   labels:
     app.kubernetes.io/name: gitops-agent-secret
     app.kubernetes.io/part-of: argocd
-  name: arm-agent-agent
-  namespace: arm-agent-image
+  name: arm-ashin-agent
+  namespace: arm-ashin
 type: Opaque
 stringData:
   GITOPS_AGENT_TOKEN: |
-    LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFdlFJQkFEQU5CZ2txaGtpRzl3MEJBUUVGQUFTQ0JLY3dnZ1NqQWdFQUFvSUJBUUN6OWEvSDB2TXVzU0JLClp5WTBsbGZMenpQclF4UkUzVWtCZGMrRXFaZzZNMTcvVUtXeTllVVQ2eWE2OFhNMWJoU3pyaWRTRmlFbk1ET1MKUmN5K1hHRFV2S1NFS3NYTUdodE1nY01VdVlGUGkrM1FFbXM0K3VLNnNMaEVkbkJnUXprcFBQNmo4ZklmVW54SwpQQUhPSVpZTVc5VlRXUWY5M0JVV2NNa3BSRHdIcC8xcHRZN1VPbFVlajBmcW9RU1gvYmhwc0VKLzdIc09VazEyCmN2T041MDFKWnJpRkFyLysxQ1A1NWR5M1JNb1VtTlhUMlJsQUZuS05oWFVSWFQrbG0wN1RRU0xTOHhEZFNFU3IKZEdmYzlXVUZzZzlrMi9wM1RRaUxjSXlRaVRWWXpjQTNVMk5FbE1wZGFvQU9UdURsUm5iWnh6bEtLTzFoNFZxVQpMcTZUd25qTEFnTUJBQUVDZ2dFQWR0RHgvQmIxWkpDaDV6M3ZaYTBWem9UQm5NVXZMc0NEb1NrdG1FTjVOSVFTClpyUFNrelB5eVpIcWdtZEVUN1NjaW4yampIajc3cW5PZ3ZiKzFYaWNuaGptN2pSblgvaWtxWURMVW5XZ1FPcjgKV3ZLdVJIS3hHOTN0NjVYZllFOUNBRTQ3T2ZkV2l3T2srRVppVXJ5dUd2N08vRGErSmdnWEREZnZPUVhLTktyRQpJZTZhQ2N2Sm5BUW5jWjJYSTVpTlFINWJDMEJ4ZVdYM1VId21vaEhRd0wzUUlYVUpUOWhPOGlYM0VCOVN6VmxQCnJqM0M5djloYWFLMWVxSnU2VHoxcGdmQWNDeGhNWGtkVUo1M3Y4WUh3WGtadndUTi9WZmJobFRLWU4zSHlsNjYKUGY0Vlljd3lJNFdpVlZCWmovM1h4N2tBd0YwOFgyYU01cWwrTDR1M3dRS0JnUURYRTUweG1rUk93MVVPOGQyMwpIYzFmaDdnUDBsR0d0emFtN0ZueFd4c0FTVDA5elFJNXBzS1lrSjd5WmNOb1pFazNXYkxqOEhUZkR2Z1lmWGNYCmJ2YUVac3Y0ZXBiYkJMbmtrU0tvQk5ZQ3NKeWhJajlSV3MyRUttaUh5c2ptdDk2MnV1N0lkMHBNd20xSlY0a3AKWVE5ekI0ZTM1aGdLWXQ2QkxvRXZDSGcxbXdLQmdRRFdNNGNQSGRYMk43NGMzdGZkQmpyOTJRTzJ3YjlmQTBiYgorU0I2OEJJbjh3QXdvNEE5L21vaGs3b3VuYmVuRWxJRzNpQjVYajRTbmw2YXArV1VlUHA5VS9Ha2RYYTRJdXczCk9QU1dxa0tzQkhObUREQ3hlZVQwR2lESHZkV09BL0pQb3puVlVMSUQzMXdUd1M1Wkdmd1EzUXZ5bVEyQ2tXQTcKSGJpTGdEUVVrUUtCZ0M2blNvbmY5TUZCRGNwWUhNZ0Q1dkM1OStzMnJBaVU1WDMvOXVLcjZJZC9XNUYwVHU5QwpoU09pKzFlSlM0SHhmeEJLbk10azlYVU5RalBOdzIrSjJsK09ET0N4ZHRlN2hyZFY1RGFlRmU0dmNVcGlxMmx5ClVQSkNZTHBUK3BCUmdqWVJCb3JsbFhCaEhHTzBZVVJna1lGYU9NNWpVd090dnFZMitEN0RqNC9SQW9HQkFMNm4KM0pZaTYxZ2RvNVVVOExSbG9FcGtTRDc2VXZraDlJZEZScGpHYUpLd1kwSG50ZlQ0SjhVOU5XSGF0aVg2VTVLVApVZnBWWFJDN2I5OWVoQ1ZVVFRrU1o2b0hkNlZNU0U2YTNuSGdtRGwrT0t6ak90QXRmQkdkMUFHVndhaUhjTDFiCnZ0VlUzeTQ5T0RySkh4VGw0UXV0aEwzcFp6SUpiY3NRbUR0cTRIQlJBb0dBVXhCZXIxTGxobGJoTDNDNCttRHcKOHExUzdVcTBhRnQ5azBxZ0FsMmlWZEdsYnVmZE04R1Q5U1VoT2oydzZYM2lJc0pNV3Y5K0NpVmV6V1NleXhDVgo2ZUZrWWlPQzJXbzFQRDMxQkZEVHRyRjBRM0V0eWJieCs0SjlHa002TWJLcTJGcEo4RkVyRkxGeHRzc3ZFQ2N5CkxFaElNZnMwOFd4Uk5qWjhndFl2M2prPQotLS0tLUVORCBSU0EgUFJJVkFURSBLRVktLS0tLQo=
+    LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFdlFJQkFEQU5CZ2txaGtpRzl3MEJBUUVGQUFTQ0JLY3dnZ1NqQWdFQUFvSUJBUURDbGYrYjlyckErS1EyCkVOQmx3WitTUU1RM2o1Q2ZOMHRWMVNWRDNTajZGM0o5WTQ4ck14THpZY3hKY3BjUllkV0ZIWGExaC85V0M5NnQKempEU0xVL3RWeFRuOERmT0krUDFCbjFkVmpVMkdXYmU0YUU2eGdCTE9VdjlYZkg3OC9FZUNqSytZS2VYZ1dJYwpZYlFTYXZjelR5aFlCYnVkbWdsc3kvY3FNVWNJNHJzYndHSytsbHRRRW1xeWZwamRIb3g0VlBYMnpXN2ZxWjZJCktZYXM5OVB3MHVoQ0ZZOW9KcU1IUWVqZ2J3c3R6RnhFazlGalFsQ1hhelBJNjlnU1lUZk1XOGczM1p3NjE1M0MKaGNNZnRwak5nZzJDTEpaZVpOVHFSMysxdXk5WC95QlA3cjJuVjA0TUtWWHF1TUg5QmphTTN6eHM2Q1pMZXJiZgpqY3J2OU82NUFnTUJBQUVDZ2dFQUdTUndocUoydHdCcGwyTE15cGtlR1RPdEp0Q3lDeUNGNTIxSEIySElMYWhoCjdybXlnZzV6WUdjK2tpN3dQaHE2RUIwaWZZbzQvOUZBMEl4WDJwQm9SMjU5RVFzRTZ1blFScFMwRmg5UmVOQUgKYnIwUXJCdHhaa2JjL3J2b3pIbFVxbUQrOVlKZnBUL2VnWFJPWkNMV0ZoY2dTMTlTUXFib21Ob3g4WTIwYy8wKwpHTHRPaCtra3FabUFqV2padCsxUFlXaG5TdldTMk11dVFZQ1hjSSt0VEhDU1dBOWFJci9PK2xXWi9sQW1NTUFVClYwVjFLUFpRSVFEWGRGcEhsN1RlWjlVM01aaWRwbXRPYzh1NE5IclVsNllJOHQwc3ljRFo1enNFMi9OZTlkLzYKcFhjcGx1aE5MbVh5TWFrejlRNTlucUFJS3V4Y2xQUGpqMEE4MnFYN0VRS0JnUURVZ1NvZXZhTjFmSXBFejZ5SgpFYU9kdGRZNWZGa0tYNG1IWTVNWEIycXR0OERBNnpLYlFSaWF4MElPbFZoc2NhbXZaQldoN3VEd0tmME5zSktDCjZnMzhTaTZTTUVsRHdmMkIyRW95b1phSW56WEhpbm0rR0VpMU9oZ1lkQitTd3U4b0F4dzhMUWp1QjZWSVp3TUcKQnZVVGlzTHVLVFJJNDgyZy9sRWZTc3dGdHdLQmdRRHFhZTZ2U2VCLzdIOS9TSG9OMWlhckZIMURrbDh0QzNuMwppNmE3amFKL09JZlo3WUpFZ1RUckNzWklONnpxYUVQbG5GdDNkQWlWaU5uaFFKQ1k3OWE4Wk95TGoyS01CQUk2CjVpMHNtaGFaUEYzcEVjRWY1UFQwUmZ3QjFLV1BmQkFUT1E2RGVJNVhsNWFKV3J2NU04azUxRm5GeFZHd0k1U2sKbVN2Ynpxd3ZEd0tCZ0RId0hKN1d2OWYzS1dNY1RwWnpmN2lySjZtZ3NDZ0E1WWZjZlk5MjNibnZLYXZzV1pzawpoQXl6Y0xHT3BSWHU3QXBjZ2J6cEx4RWhQT2QvckI1NXRFbXFnU0UzbWJBRG9YaG5CS0M3V20zR3hGT2RGaGozCkNmY1VyTjdxUXhVeEhCU1NEb3VScGJ5U0xXUkRXUEdNcHdFdHBidGtFWFpqbWtvUUdhNDUzSkluQW9HQkFOZHUKZjZPdEc1dTFkLzg4VnArOHZsRGdSYmNDSUdJL2Q5b2ZDQjY2TGlzSmd5Q3ZmTmNFZitPN1JUczluN2JXR0FBLwpVSGhadFVIb1FZVVlWMHVXc0J6NEM4Uy9BK3gyQ3E2aXQ4V1QzMHo1QTcyZFNZWE1YNnJYWHFFNEV1ZnBOc1RUCjNSaktoTmJQUTlQOEJXRWpUTDNQQUtvWGk5bDYrYkxENm1EYWNiZlZBb0dBQ0JwSlNMTGlWTWJSanNLcW5QQ0YKQzRBU3hWNlNXSFR0TlBrdGZ3ZVl1RGxLaTRKTXBsLzNDZjZUN1diN01xTVQvdWIvY28zNFVkVmQ0N2p2VTlPRwpiRWsxZ0VrWkNFdENPL2xZZlRrT01DWGN5NFlYVlVERGF2dVhWcjNyOERwT0NkckFHQWFpNVRaMStpMmkrbWdIClRsa2J3cjROS2N0TE41UkZSak5aNHV3PQotLS0tLUVORCBSU0EgUFJJVkFURSBLRVktLS0tLQo=
 ---
 
 
@@ -20882,7 +20882,7 @@ metadata:
     app.kubernetes.io/name: argocd-applicationset-controller
     app.kubernetes.io/part-of: argocd
   name: argocd-applicationset-controller
-  namespace: arm-agent-image
+  namespace: arm-ashin
 spec:
   ports:
     - name: webhook
@@ -20906,7 +20906,7 @@ metadata:
     app.kubernetes.io/name: argocd-metrics
     app.kubernetes.io/part-of: argocd
   name: argocd-metrics
-  namespace: arm-agent-image
+  namespace: arm-ashin
 spec:
   ports:
     - name: metrics
@@ -20926,7 +20926,7 @@ metadata:
     app.kubernetes.io/name: argocd-redis
     app.kubernetes.io/part-of: argocd
   name: argocd-redis
-  namespace: arm-agent-image
+  namespace: arm-ashin
 spec:
   ports:
     - name: tcp-redis
@@ -20944,7 +20944,7 @@ metadata:
     app.kubernetes.io/name: argocd-repo-server
     app.kubernetes.io/part-of: argocd
   name: argocd-repo-server
-  namespace: arm-agent-image
+  namespace: arm-ashin
 spec:
   ports:
     - name: server
@@ -20967,7 +20967,7 @@ metadata:
     app.kubernetes.io/name: argocd-server-metrics
     app.kubernetes.io/part-of: argocd
   name: argocd-server-metrics
-  namespace: arm-agent-image
+  namespace: arm-ashin
 spec:
   ports:
     - name: metrics
@@ -20985,7 +20985,7 @@ metadata:
     app.kubernetes.io/name: argocd-applicationset-controller
     app.kubernetes.io/part-of: argocd
   name: argocd-applicationset-controller
-  namespace: arm-agent-image
+  namespace: arm-ashin
 spec:
   selector:
     matchLabels:
@@ -21133,11 +21133,11 @@ spec:
               name: metrics
           resources:
             requests:
-              memory: 256
-              cpu: "0.2"
+              memory: 512Mi
+              cpu: "1"
             limits:
-              memory: 256
-              cpu: "0.2"
+              memory: 512Mi
+              cpu: "1"
           securityContext:
             allowPrivilegeEscalation: false
             capabilities:
@@ -21196,7 +21196,7 @@ metadata:
     app.kubernetes.io/name: argocd-redis
     app.kubernetes.io/part-of: argocd
   name: argocd-redis
-  namespace: arm-agent-image
+  namespace: arm-ashin
 spec:
   selector:
     matchLabels:
@@ -21239,11 +21239,11 @@ spec:
                 - ALL
           resources:
             requests:
-              memory: 256
-              cpu: "0.2"
+              memory: 512Mi
+              cpu: "1"
             limits:
-              memory: 256
-              cpu: "0.2"
+              memory: 512Mi
+              cpu: "1"
       securityContext:
         runAsNonRoot: true
         runAsUser: 999
@@ -21260,7 +21260,7 @@ metadata:
     app.kubernetes.io/name: argocd-repo-server
     app.kubernetes.io/part-of: argocd
   name: argocd-repo-server
-  namespace: arm-agent-image
+  namespace: arm-ashin
 spec:
   selector:
     matchLabels:
@@ -21482,11 +21482,11 @@ spec:
             periodSeconds: 10
           resources:
             requests:
-              memory: 256
-              cpu: "0.2"
+              memory: 1Gi
+              cpu: "1"
             limits:
-              memory: 256
-              cpu: "0.2"
+              memory: 1Gi
+              cpu: "1"
           securityContext:
             allowPrivilegeEscalation: false
             capabilities:
@@ -21528,11 +21528,11 @@ spec:
           name: copyutil
           resources:
             requests:
-              memory: 256
-              cpu: "0.2"
+              memory: 512Mi
+              cpu: "1"
             limits:
-              memory: 256
-              cpu: "0.2"
+              memory: 512Mi
+              cpu: "1"
           securityContext:
             allowPrivilegeEscalation: false
             capabilities:
@@ -21600,8 +21600,8 @@ metadata:
     app.kubernetes.io/component: agent
     app.kubernetes.io/name: gitops-agent
     app.kubernetes.io/part-of: argocd
-  name: arm-agent-agent
-  namespace: arm-agent-image
+  name: arm-ashin-agent
+  namespace: arm-ashin
 spec:
   replicas: 1
   selector:
@@ -21614,7 +21614,10 @@ spec:
         app.kubernetes.io/name: gitops-agent
         app.kubernetes.io/part-of: argocd
     spec:
-      serviceAccountName: arm-agent-agent
+      serviceAccountName: arm-ashin-agent
+      nodeSelector:
+        cloud.google.com/compute-class: Scale-Out
+        kubernetes.io/arch: arm64
       affinity:
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
@@ -21638,9 +21641,9 @@ spec:
           imagePullPolicy: Always
           envFrom:
             - configMapRef:
-                name: arm-agent-agent
+                name: arm-ashin-agent
             - secretRef:
-                name: arm-agent-agent
+                name: arm-ashin-agent
           volumeMounts:
             - mountPath: /app/config/ssh
               name: ssh-known-hosts
@@ -21661,11 +21664,11 @@ spec:
               type: RuntimeDefault
           resources:
             requests:
-              memory: 256
-              cpu: "0.2"
+              memory: 512Mi
+              cpu: "1"
             limits:
-              memory: 256
-              cpu: "0.2"
+              memory: 512Mi
+              cpu: "1"
           startupProbe:
             exec:
               command:
@@ -21702,7 +21705,7 @@ spec:
           name: tmp
         - name: certvol
           secret:
-            secretName: arm-agent-agent-ca
+            secretName: arm-ashin-agent-ca
             optional: true
             items:
               - key: ca.bundle
@@ -21716,7 +21719,7 @@ metadata:
     app.kubernetes.io/name: argocd-application-controller
     app.kubernetes.io/part-of: argocd
   name: argocd-application-controller
-  namespace: arm-agent-image
+  namespace: arm-ashin
 spec:
   replicas: 1
   selector:
@@ -21886,11 +21889,11 @@ spec:
           name: argocd-application-controller
           resources:
             requests:
-              memory: 512
-              cpu: "0.2"
+              memory: 2Gi
+              cpu: "1"
             limits:
-              memory: 512
-              cpu: "0.2"
+              memory: 2Gi
+              cpu: "1"
           ports:
             - containerPort: 8082
           readinessProbe:
@@ -21936,7 +21939,7 @@ apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: argocd-application-controller-network-policy
-  namespace: arm-agent-image
+  namespace: arm-ashin
 spec:
   ingress:
   - from:
@@ -21953,7 +21956,7 @@ apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: argocd-applicationset-controller-network-policy
-  namespace: arm-agent-image
+  namespace: arm-ashin
 spec:
   ingress:
   - from:
@@ -21974,7 +21977,7 @@ apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: argocd-redis-network-policy
-  namespace: arm-agent-image
+  namespace: arm-ashin
 spec:
   egress:
   - ports:
@@ -22008,7 +22011,7 @@ apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: argocd-repo-server-network-policy
-  namespace: arm-agent-image
+  namespace: arm-ashin
 spec:
   ingress:
   - from:
@@ -22037,8 +22040,8 @@ spec:
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: arm-agent-agent-upgrader
-  namespace: arm-agent-image
+  name: arm-ashin-agent-upgrader
+  namespace: arm-ashin
 spec:
   schedule: "0 */4 * * *"
   concurrencyPolicy: Forbid
@@ -22047,7 +22050,7 @@ spec:
     spec:
       template:
         spec:
-          serviceAccountName: arm-agent-agent-upgrader
+          serviceAccountName: arm-ashin-agent-upgrader
           containers:
               - name: upgrader
                 image: harness/upgrader:latest
@@ -22066,10 +22069,10 @@ spec:
           volumes:
             - name: config-volume
               configMap:
-                name: arm-agent-agent-upgrader
+                name: arm-ashin-agent-upgrader
             - name: certvol
               secret:
-                secretName: arm-agent-agent-ca
+                secretName: arm-ashin-agent-ca
                 optional: true
                 items:
                 - key: ca.bundle
