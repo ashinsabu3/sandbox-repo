@@ -21613,10 +21613,10 @@ spec:
         app.kubernetes.io/component: agent
         app.kubernetes.io/name: gitops-agent
         app.kubernetes.io/part-of: argocd
-    nodeSelector:
-        beta.kubernetes.io/arch: arm64
     spec:
       serviceAccountName: arm-ashin-agent
+      nodeSelector:
+        beta.kubernetes.io/arch: arm64
       affinity:
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
