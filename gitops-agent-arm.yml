@@ -21616,7 +21616,6 @@ spec:
     spec:
       serviceAccountName: arm-ashin-agent
       nodeSelector:
-        cloud.google.com/compute-class: Scale-Out
         kubernetes.io/arch: arm64
       affinity:
         podAntiAffinity:
